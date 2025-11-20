@@ -13,7 +13,12 @@ function Navigation({ universityName }) {
     navigate('/')
   }
 
-  const isActive = (path) => location.pathname === path
+  const isActive = (path) => {
+    if (path === '/courses') {
+      return location.pathname.startsWith('/courses')
+    }
+    return location.pathname === path
+  }
 
   return (
     <nav className="navbar">
@@ -90,23 +95,24 @@ function Navigation({ universityName }) {
           </li>
           {user ? (
             <>
-              <li>
-                <Link 
-                  to="/dashboard" 
-                  className={isActive('/dashboard') ? 'active' : ''}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Dashboard
-                </Link>
-              </li>
-              {(user.email?.includes('admin') || user.role === 'admin' || user.email === 'admin@university.edu') && (
+              {(user.email?.includes('admin') || user.role === 'admin' || user.email === 'admin@university.edu') ? (
                 <li>
                   <Link 
                     to="/admin" 
                     className={isActive('/admin') ? 'active' : ''}
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Admin
+                    Admin Dashboard
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link 
+                    to="/dashboard" 
+                    className={isActive('/dashboard') ? 'active' : ''}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    My Dashboard
                   </Link>
                 </li>
               )}
