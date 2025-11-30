@@ -15,7 +15,10 @@ function Navigation({ universityName }) {
 
   const isActive = (path) => {
     if (path === '/courses') {
-      return location.pathname.startsWith('/courses')
+      return location.pathname.startsWith('/courses') && !location.pathname.startsWith('/products')
+    }
+    if (path === '/products') {
+      return location.pathname.startsWith('/products')
     }
     return location.pathname === path
   }
@@ -64,6 +67,15 @@ function Navigation({ universityName }) {
               onClick={() => setIsMenuOpen(false)}
             >
               Courses
+            </Link>
+          </li>
+          <li>
+            <Link 
+              to="/products" 
+              className={isActive('/products') ? 'active' : ''}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Resources
             </Link>
           </li>
           <li>

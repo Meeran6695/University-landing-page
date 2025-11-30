@@ -11,6 +11,8 @@ import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
 import CourseDetails from './components/CourseDetails'
 import CoursesList from './components/CoursesList'
+import ProductsList from './components/ProductsList'
+import ProductDetails from './components/ProductDetails'
 import Admin from './components/Admin'
 import ProtectedRoute from './components/ProtectedRoute'
 import AdminRoute from './components/AdminRoute'
@@ -30,6 +32,8 @@ function App() {
           <Route path="/testimonials" element={<><Navigation universityName="TechVista University" /><Testimonials /></>} />
           <Route path="/courses" element={<><Navigation universityName="TechVista University" /><CoursesList /></>} />
           <Route path="/courses/:courseId" element={<><Navigation universityName="TechVista University" /><CourseDetails /></>} />
+          <Route path="/products" element={<><Navigation universityName="TechVista University" /><ProductsList /></>} />
+          <Route path="/products/:productId" element={<><Navigation universityName="TechVista University" /><ProductDetails /></>} />
           <Route 
             path="/dashboard" 
             element={
